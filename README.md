@@ -47,9 +47,6 @@ backend/
 │   │   ├── home-router.js
 │   │   ├── signIn-router.js
 │   │   └── signUp-router.js
-│   ├── middlewares/         # Custom middlewares (auth, error handling)
-│   │   ├── authMiddleware.js
-│   │   └── errorHandler.js
 │   ├── models/              # Mongoose models (User schema)
 │   │   └── userSchema.js
 │   ├── db/                  # MongoDB connection
