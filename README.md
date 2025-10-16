@@ -15,7 +15,7 @@ The goal is to provide a **scalable and professional backend structure** ready f
 - 🗄️ Database connection with **Mongoose**  
 - ⚙️ Environment variables using **dotenv**  
 - 🧠 Centralized error handling  
-- 🧱 Clean architecture with controllers, routes, and middlewares  
+- 🧱 Clean architecture with controllers, routers, and middlewares  
 
 ---
 
@@ -39,18 +39,22 @@ The goal is to provide a **scalable and professional backend structure** ready f
 backend/
 │
 ├── src/
-│   ├── controllers/         # Business logic (auth, user, etc.)
-│   │   └── authController.js
-│   ├── routes/              # API routes
-│   │   └── authRoutes.js
+│   ├── controllers/         # Business logic (home, signIn, signUp)
+│   │   ├── home-controller.js
+│   │   ├── signIn-controller.js
+│   │   └── signUp-controller.js
+│   ├── routers/             # API routes
+│   │   ├── home-router.js
+│   │   ├── signIn-router.js
+│   │   └── signUp-router.js
 │   ├── middlewares/         # Custom middlewares (auth, error handling)
 │   │   ├── authMiddleware.js
 │   │   └── errorHandler.js
 │   ├── models/              # Mongoose models (User schema)
-│   │   └── userModel.js
-│   ├── database/            # MongoDB connection
-│   │   └── connect.js
-│   ├── validations/         # Joi validation schemas
+│   │   └── userSchema.js
+│   ├── db/                  # MongoDB connection
+│   │   └── connectDb.js
+│   ├── userValidation/      # Joi validation schemas
 │   │   └── userValidation.js
 │   ├── app.js               # Express app setup
 │   └── server.js            # Server configuration
@@ -69,7 +73,7 @@ Follow the steps below to set up the project locally.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/devgui/authflow-backend.git
+git clone https://github.com/GuilhermeGuedes1/authflow-backend.git
 cd authflow-backend
 ```
 
@@ -105,7 +109,7 @@ node server.js
 |:--------|:----------|:-------------|:---------------|
 | `POST` | `/home/sign-up` | Register a new user | ❌ No |
 | `POST` | `/home/sign-in` | Authenticate user and return JWT token | ❌ No |
-| `GET` | `/home` |
+| `GET` | `/home` | Example protected route | ✅ Yes |
 
 ---
 
@@ -113,7 +117,7 @@ node server.js
 
 ### 🔸 Sign Up
 ```json
-POST /signup
+POST /home/sign-up
 {
   "name": "Guilherme Guedes",
   "email": "guilherme@example.com",
@@ -121,15 +125,22 @@ POST /signup
 }
 ```
 
-### 🔸 Login
+### 🔸 Sign In
 ```json
-POST /login
+POST /home/sign-in
 {
   "email": "guilherme@example.com",
   "password": "123456"
 }
 ```
 
+### 🔸 Protected Route Example
+To access `/home`, include your JWT token in the Authorization header:
+```
+Authorization: Bearer <your_token_here>
+```
+
+---
 
 ## 🧩 Project Goals
 
