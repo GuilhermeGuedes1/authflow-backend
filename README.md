@@ -109,7 +109,7 @@ node server.js
 |:--------|:----------|:-------------|:---------------|
 | `POST` | `/home/sign-up` | Register a new user | ❌ No |
 | `POST` | `/home/sign-in` | Authenticate user and return JWT token | ❌ No |
-| `GET` | `/home` | Example protected route | ✅ Yes |
+| `GET` | `/home` | Example protected route | ❌ Not yet |
 
 ---
 
