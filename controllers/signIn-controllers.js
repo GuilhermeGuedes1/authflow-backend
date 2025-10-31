@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
-
 dotenv.config()
 
 const signIn =  async (req, res) => { 
@@ -16,7 +15,7 @@ const signIn =  async (req, res) => {
     try {
 
         const user = await userDb.findOne({email})
-        if(!email){
+        if(!user){
             return res.status(400).json({message: 'User doenst exist'})
         }
 
@@ -26,7 +25,7 @@ const signIn =  async (req, res) => {
             return res.status(400).json({message: 'Wrong email or password'})
         }
 
-        const token = jwt.sign({name: user.name, email: user.email}, process.env.JWT_SECRET, { expiresIn: '1d'})
+        const token = jwt.sign({id: user._id, name: user.name, email: user.email}, process.env.JWT_SECRET, { expiresIn: '1d'})
         
         return res.status(200).json({message : 'User logged in successfully', token})
 
