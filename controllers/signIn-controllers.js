@@ -16,7 +16,7 @@ const signIn =  async (req, res) => {
     try {
 
         const user = await userDb.findOne({email})
-        if(!email){
+        if(!user){
             return res.status(400).json({message: 'User doenst exist'})
         }
 
