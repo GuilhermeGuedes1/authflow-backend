@@ -1,6 +1,6 @@
 import userSchema from "../models/userSchema.js"
 
-const profileController = async (req, res) => {
+const userController = async (req, res) => {
 
     try {
         const userId = req.user.id
@@ -20,4 +20,4 @@ const profileController = async (req, res) => {
     
 }
 
-export { profileController }
+export default userController 
